@@ -8,4 +8,3 @@ if __name__ == '__main__':
         # disable debug mode when deploy on server
         app.run(debug=True, port=5000, host='0.0.0.0')
 
-test merge
