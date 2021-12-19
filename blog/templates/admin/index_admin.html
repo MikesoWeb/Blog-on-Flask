@@ -1,0 +1,15 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+
+<h3>Добро пожаловать, <span style="color: green;"> {{ current_user.username.split(' ')[0] }}</span></h3>
+<img style="width:100px;" src="{{ image_file }}" alt="foto">
+
+<h4>Список пользователей:</h4>
+<ol>
+    {% for user in all_users %}
+        <li>{{ user }}</li>
+    {% endfor %}
+</ol>
+
+{% endblock body %}

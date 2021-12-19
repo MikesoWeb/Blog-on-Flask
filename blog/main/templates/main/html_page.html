@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+{% set lst = ['https://www.youtube.com/embed/grWRSyptTnk', 'https://youtube.com/embed/hED_XkTBBSw',
+                'https://youtube.com/embed/D1u3H9_wmUU', 'https://youtube.com/embed/CTPDOyitTbM',
+                'https://youtube.com/embed/S0e_0qFejjg', 'https://youtube.com/embed/xz2uNO5Khgk'
+                ] %}
+
+
+            <div class="video_grid">
+{% for i in range(6) %}
+
+                <div class="single_cell">
+
+                   <iframe width="480" height="320" src="{{ lst[i] }}" title="YouTube video player" frameborder="0"
+                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                </div>
+ {% endfor %}
+            </div>
+
+
+
+
+{% endblock %}

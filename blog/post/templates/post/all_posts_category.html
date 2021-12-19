@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="posts_category_side">
+Статьи категории: {{ current_category.category }}
+
+
+<div class="list_posts_category">
+
+<ol>
+
+{% for post in post_category %}
+
+    <li style="font-size: 20px; list-style: none;"><a href="{{ url_for('posts.post', slug=post.slug) }}" style=" text-decoration: none;"> {{ post.title|safe }}</a> ({{post.tags|count}})</li>
+
+    {% endfor %}
+</ol>
+</div>
+    </div>
+{% endblock %}

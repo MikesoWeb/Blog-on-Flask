@@ -1,0 +1,699 @@
+/* Обнуление */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+html,
+body,
+.wrapper {
+  height: 100%;
+  font-family:monospace;
+
+}
+
+
+.alert{
+    background-color:white;
+    border-radius: 200px;
+    font-size: 16px;
+    color:green;
+    width: 60%;
+    margin: 5px auto ;
+    padding:7px 0;
+    text-align: center;
+    height:40px;
+    align-items: center;
+
+}
+
+
+/* Пустой блок, используется временно */
+.empty_block{
+    height:30px;
+}
+
+
+/* HEADER */
+.header {
+    height: 140px;
+    background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+}
+
+
+.main_menu li {
+    display: flex;
+    width: 150px;
+    justify-content: center;
+    border-radius: 100px;
+    margin-top: 2%;
+    box-shadow: 10px 10px 10px grey;
+    font-size: 20px;
+    height: 30px;
+}
+
+
+.main_menu a{
+    text-decoration: none;
+    color: mediumaquamarine;
+}
+
+
+.header li:hover {
+    transition-duration: 0.5s;
+    box-shadow: 4px 5px 50px grey;
+}
+
+
+/* LOGO */
+.logo img{
+    float: left;
+    margin-left: 100px;
+    margin-top:10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100px;
+    box-shadow: 10px 10px 10px 1px lightblue;
+    border-radius: 100px;
+}
+
+
+/* MAIN_MENU */
+.main_menu{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
+
+
+/* MAIN_PAGE */
+.wrapper{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.cascade_block {
+    display: flex;
+    margin: auto auto;
+    width: 80%;
+    box-shadow: -5px 15px 10px skyblue;
+    border-radius: 200px;
+}
+
+
+.cascade_menu {
+    font-size: 35px;
+    margin: 0 auto;
+    padding: 0px 0;
+    text-align: right;
+}
+
+
+.user_posts{
+    margin: 0 auto;
+    width:50%;
+}
+
+
+.user_info{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.user_username_info{
+    align-self: center;
+    margin-left: 20px;
+    vertical-align: middle;
+
+}
+
+
+.user_img_info img{
+    width:50px;
+
+}
+
+
+.info_name {
+    box-shadow: -5px 15px 10px skyblue;
+    border-radius: 200px;
+    padding: 10px 20px;
+    letter-spacing: 3px;
+}
+
+
+.cascade_block_li {
+    width: 100%;
+    font-weight: 600;
+    color: dodgerblue;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0px 0px 0px skyblue;
+    border-radius: 200px;
+
+}
+
+.cascade_block_li .checkmark {
+    margin-bottom: 10px;
+    font-style: normal;
+    box-shadow: 5px 3px 10px grey;
+    font-size: 25px;
+    padding: 5px;
+    border-radius: 200px;
+    letter-spacing: 2px;
+    list-style: none;
+}
+
+
+ul .checkmark:before {
+    content: "\2713\0020";
+    color: forestgreen;
+}
+
+
+.checkmark a {
+    text-decoration: none;
+    color: mediumaquamarine;
+}
+
+
+.checkmark:hover {
+    transition-duration: 0.1s;
+    box-shadow: 0px 12px 10px orange;
+}
+
+
+/* BLOCK_CONTENT */
+.content{
+    width: 80%;
+    align-items: center;
+    margin: 0 auto;
+    flex: 1 0 auto;
+
+}
+
+
+.update_info{
+    text-align: center;
+    width: 250px;
+    margin: 0 auto;
+}
+
+
+
+/* LOGIN_FORM */
+.register_form{
+    height: 200px;
+    align-items: center;
+    text-align: center;
+}
+
+
+.legend {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+
+/* FOOTER */
+.footer {
+    display: flex;
+    height: 100px;
+    background-color: antiquewhite;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex: 0 0 auto;
+}
+
+
+/* FORM and BUTTON */
+.form-post-title{
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+input,
+input[placeholder]{
+    padding-left: 10px;
+    font-size: 16px;
+
+}
+
+
+.form-post-textarea{
+    width: 100%;
+    height: 260px;
+    border-radius: 10px;
+}
+
+
+textarea[placeholder]{
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+
+.btn_new_post{
+    width: 120px;
+    height: 30px;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+
+}
+
+
+.btn_sign_in{
+    width: 120px;
+    height: 30px;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+
+.btn_log_in{
+    width: 120px;
+    height: 30px;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+
+}
+
+
+.create_post_btn{
+    padding: 10px 20px;
+    weight: 250px;
+    border-radius: 20px;
+    background-color: white;
+    margin-bottom: 20px;
+
+}
+
+
+.create_post_btn a{
+    text-decoration:none;
+    background-color: white;
+
+}
+
+
+.form-group_button{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.text-muted {
+    font-size: 15px;
+    color: red;
+    margin-right: 10px;
+}
+
+
+.content-section{
+    display: flex;
+    weight: 100%;
+    justify-content: space-between;
+    margin: 50px auto 0;
+}
+
+.tags{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.delete_tag a{
+    color: red;
+    text-decoration: none;
+}
+
+.list_posts{
+    width:60%;
+    font-size: 20px;
+    margin: 0 auto;
+
+}
+
+
+.list_account_posts {
+    margin: 0 20px;
+    font-size: 16px;
+}
+
+
+.list_account_posts a{
+     font-size: 18px;
+     text-decoration: none;
+}
+
+
+.right_side{
+    text-align: center;
+    width: 250px;
+
+}
+
+
+.height_form{
+    height: 10px;
+    font-size: 1em;
+}
+
+
+.post_stat_side{
+    display:flex;
+    justify-content: space-between;
+}
+
+
+.comment_side{
+    margin: 10px;
+    padding: 10px 0;
+}
+
+
+.single_comment{
+    border: solid lightgrey 1px;
+    border-top: none;
+    margin: 0 0px 20px;
+    padding: 5px 10px;
+
+}
+
+
+.head_comment{
+    display:flex;
+    justify-content: space-between;
+}
+
+
+.left_comment_side{
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+
+.right_comment_side{
+    margin-right: 10px;
+    font-size: 12px;
+
+}
+
+
+.body_comment{
+    text-align:left;
+    margin: 10px 40px;
+    padding: 10px 40px;
+}
+
+
+.stat_comment{
+    display:flex;
+    justify-content: space-between;
+}
+
+
+.left_stat_side{
+    margin-left:20px;
+    font-size: 15px;
+
+}
+
+
+.right_stat_side{
+    margin-right:40px;
+    font-size: 15px;
+}
+
+
+.card{
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    width: 230px;
+    border :none;
+}
+
+
+.account-img{
+    width:100%;
+    border-radius: 40px;
+    margin-bottom: 10px;
+}
+
+
+.blog_content_area{
+    display: flex;
+}
+
+
+.blog_content{
+    width: 60%;
+    text-align: center;
+    margin: 40px auto;
+}
+
+
+.info_posts_user h4{
+    display: flex;
+    height: 60px;
+    padding: 10px 15px;
+    background-color: lightblue;
+    align-items: center;
+}
+
+
+.info_posts_user{
+    margin-top:60px;
+    text-align: center;
+}
+
+
+.new_post,
+.log_in,
+.sign_in,
+.reset_pass,
+.reset_token{
+    width: 60%;
+    margin: 100px auto;
+    text-align:center;
+
+}
+
+
+.test{
+    margin: 0 auto;
+    outline: green 1px solid;
+    text-align: center;
+
+}
+
+
+.form-check{
+    text-align: left;
+}
+
+
+.pad_top_card{
+    padding-top: 10px;
+}
+
+
+.wrapper_content{
+    margin: 100px auto;
+    text-align: center;
+}
+
+
+.info_user_blog{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.posts_blog{
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+
+.posts_blog h2 a{
+    color: green;
+    text-decoration: none;
+
+}
+
+
+.info_user_blog_left img{
+    outline: orange 1px solid;
+    box-shadow: 2px 2px 12px 9px lightgrey;
+    margin-right: 20px;
+
+}
+
+
+.info_user_blog_left a{
+    text-decoration: none;
+    color: grey;
+}
+
+
+.info_user_blog_right {
+    font-size: 14px;
+
+}
+
+
+.user_post{
+    text-align: center;
+    margin: 40px auto;
+    width: 60%;
+}
+
+
+.user_info_single_post{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+.online_status{
+    display: flex;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    margin-left: 20px;
+
+}
+
+.form_search{
+    color: red;
+    margin-right:40px;
+
+}
+
+
+.form_search_blog{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+
+.form_search_blog .form-control{
+    border-radius: 100px;
+    padding-left:20px;
+    width: 600px;
+    border: none;
+    box-shadow: 10px 10px 15px grey;
+
+}
+
+.posts_category_side{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 30px;
+
+}
+
+.list_posts_category{
+    display:flex;
+    justify-content: center;
+    margin-top: 40px;
+
+}
+
+
+.btn_search{
+    width: 150px;
+    border-radius: 100px;
+    font-size: 20px;
+    height: 32px;
+    margin-left: 20px;
+    color: mediumaquamarine;
+    background-color: #F5ED9B;
+    box-shadow: 10px 10px 15px grey;
+    border: none;
+
+}
+
+.btn_search:hover{
+    transition-duration: 0.5s;
+    box-shadow: 4px 5px 50px grey;
+}
+
+
+.online_user{
+
+    width:13px;
+    height:13px;
+    background-color: green;
+    border-radius: 200px;
+    text-align: right;
+    box-shadow: 0px 0px 20px 3px green;
+
+}
+
+
+.current_user{
+    text-align: right;
+    color: blue;
+    margin-left: 10px;
+    align-self: center;
+
+}
+
+
+.current_user small{
+    font-style: cursive;
+    color: blue;
+    font-size: 16px;
+
+}
+
+
+.video_grid{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 40px auto 0;
+    align-items: center;
+
+}
+
+
+.single_cell {
+    width: 30%;
+    margin:20px;
+    align-items: self;
+    text-align: center;
+
+}
+
+.single_cell iframe{
+        width:100%;
+        height:250px;
+        border-radius: 60px;
+        box-shadow: 20px 10px 10px 0px grey;
+
+}

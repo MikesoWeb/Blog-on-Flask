@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+
+{% block main_page %}
+
+<div class="wrapper">
+
+    <div class="cascade_block">
+
+        <div class="cascade_menu">
+            <p class="info_name">Mike do IT - fullstack разработка</p>
+
+            <div class="cascade_block_li">
+                <ul>
+                    <li class="checkmark"><a href="{{ url_for('main.html_page') }}">Html</a></li>
+                    <li class="checkmark"><a href="{{ url_for('main.css_page') }}">Css</a></li>
+                    <li class="checkmark"><a href="{{ url_for('main.python_page') }}">Python</a></li>
+                    <li class="checkmark"><a href="{{ url_for('main.js_page') }}">Java Script</a></li>
+                    <li class="checkmark"><a href="{{ url_for('main.flask_page') }}">Flask</a></li>
+                    <li class="checkmark"><a href="{{ url_for('main.django_page') }}">Django</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock main_page %}
+
+

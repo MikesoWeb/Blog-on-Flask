@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="logiform_loginrm log_in">
+    <form action="" method="POST">
+
+        {{ form_login.hidden_tag() }}
+            <legend class="legend">{{ legend }}</legend>
+
+            <div class="form-group">
+                {% if form_login.email.errors %}
+                {{ form_login.email(class='is-invalid', placeholder="Емайл") }}
+                <div class="invalid-feedback">
+                    {% for errors in form_login.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form_login.email(class='form-post-title', placeholder="Емайл") }}
+                {% endif %}
+            </div>
+
+                {% if form_login.password.errors %}
+                {{ form_login.password(class='form-post-title is-invalid', placeholder='Пароль') }}
+                <div class="invalid-feedback">
+                    {% for errors in form_login.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form_login.password(class='form-post-title', placeholder='Пароль') }}
+                {% endif %}
+
+            <div class="form-check">
+                 {{ form_login.remember(class='form-check-input') }}
+                 {{ form_login.remember.label(class='form-check-label') }}
+            </div>
+
+        </fieldset>
+
+
+
+
+        <div class="form-group_button">
+
+           <div class="btn"> {{ form_login.submit(class='btn_log_in') }}</div>
+            <div class="border-top pt-2">
+
+
+                 <small class="text-muted ml-2">
+                <a href="{{ url_for('users.reset_request') }}">Забыли пароль?</a>
+          </small>
+
+    <small class="text-muted">
+        <a class='ml-2' href="{{ url_for('users.register')}}"> Нужен аккаунт?</a>
+    </small>
+</div>
+
+        </div>
+
+    </form>
+</div>
+
+
+
+{% endblock %}

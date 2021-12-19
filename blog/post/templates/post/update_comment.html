@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+            {{ form_comment_update.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-6 font_update">Обновление комментария</legend>
+                <div class="form-group">
+                    {{ form_comment_update.body.label(class='form-control-label') }}
+
+                    {% if form_comment_update.body.errors %}
+                    {{ form_comment_update.body(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for errors in form_comment_update.body.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form_comment_update.body(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+
+
+            </fieldset>
+    <br>
+
+            <div class="form-group">
+                {{ form_comment_update.submit(class='btn btn-outline-info') }}
+            </div>
+
+        </form>
+
+{% endblock %}

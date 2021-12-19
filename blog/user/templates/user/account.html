@@ -1,0 +1,155 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<div class="content-section">
+
+    <div class="left_side">
+    <h5>Зарегистрированные: {{ users|count }}</h5>
+                    <ul>
+                        {% for user in users: %}
+
+
+                            <li>
+                                <div class="card_user">
+
+                                 <img src="{{ url_for('static', filename='profile_pics/' + 'users/' + user.username + '/' + 'account_img' + '/' + user.image_file) }}"
+             alt="" class="mr-3 mt-3 rounded-circle" style="width:40px;">
+                                <a href="{{ url_for('users.user_posts', username=user.username)}}">{{ user.username }}</a> ({{ user.posts|count }})
+  </div>                     {% if current_user.is_admin: %}
+                            <h6 style="color:red"><a href="{{ url_for('users.delete_user', username=user.username) }}">удалить</a>?</h6>
+                            {% else %}
+
+{% endif %}
+
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+
+</div>
+
+<div class="list_posts">
+     <h5>Список ваших статей: </h5>
+
+    <ol class="list_account_posts">
+        {% for post in user.posts %}
+           <li><a href="{{ url_for('posts.post', slug=post.slug)}}">{{ post.title|safe }}</a>
+           рубрика: <a href="{{ url_for('posts.category', category_str=post.category) }}">{{ post.category }}</a></li>
+        {% endfor %}
+     </ol>
+
+
+</div>
+<div class="right_side">
+<div class="card">
+
+        <img class="account-img" src="{{ image_file }}">
+        <div class="media-body">
+            {% if current_user.is_admin %}
+            <h4 class="account-heading;" style="color: red;">{{ current_user.username }}</h4>
+            {% else %}
+            <h4 class="account-heading;" style="color: green;">{{ current_user.username }}</h4>
+            {% endif %}
+            <p class="text-secondary" style="box-shadow: 0.5px 0.5px 0.5px 0.5px lightgreen; padding: 2px 4px;">{{ current_user.user_status }}</p>
+
+            <p class="text-secondary">{{ current_user.email }}</p>
+            {% if current_user.last_seen %}
+            <p class="text-secondary">{{ current_user.last_seen.strftime('%d.%m.%Y %H.%M') }}</p>
+            {% else %}
+            <p class="text-secondary">Обновится после следующего входа</p>
+            {% endif %}
+
+
+        </div>
+    </div>
+
+    <!-- FORM HERE -->
+<div class="update_info">
+
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            {{ form_update.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-6 font_update">Обновление аккаунта</legend>
+                <div class="form-group">
+                    {{ form_update.username.label(class='form-control-label') }}
+
+                    {% if form_update.username.errors %}
+                    {{ form_update.username(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for errors in form_update.username.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form_update.username(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form_update.email.label(class='form-control-label') }}
+                    {% if form_update.email.errors %}
+                    {{ form_update.email(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for errors in form_update.email.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form_update.email(class='form-control form-control-lg height_form') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_update.user_status.label(class='form-control-label') }}
+                    {% if form_update.user_status.errors %}
+                    {{ form_update.user_status(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for errors in form_update.user_status.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form_update.user_status(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_update.picture.label() }}
+                    {% if form_update.picture.errors %}
+                   {{ form_update.picture(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form_update.picture.errors %}
+                            <span class="text-danger">{{ error }}</span><br>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                   {{ form_update.picture(class='form-control form-control-sm') }}
+
+                    {% endif %}
+
+                </div>
+
+            </fieldset>
+    <br>
+
+            <div class="form-group">
+                {{ form_update.submit(class='btn btn-outline-info') }}
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<!--        {{ user_all  }}-->
+
+</div>
+<div class="empty_block"></div>
+
+{% endblock content %}
+
+

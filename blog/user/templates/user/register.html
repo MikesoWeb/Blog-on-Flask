@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="register_form sign_in">
+    <form action="" method="POST">
+
+        {{ form_registration.hidden_tag() }}
+        <legend class="legend">{{ legend }}</legend>
+
+        {% if form_registration.username.errors %}
+        {{ form_registration.username(class='form-post-title is-invalid', placeholder='Имя пользователя') }}
+        <div class="invalid-feedback">
+            {% for errors in form_registration.username.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form_registration.username(class='form-post-title', placeholder='Имя пользователя') }}
+        {% endif %}
+
+        {% if form_registration.email.errors %}
+        {{ form_registration.email(class='form-post-title is-invalid', placeholder='Емайл') }}
+        <div class="invalid-feedback">
+            {% for errors in form_registration.email.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form_registration.email(class='form-post-title', placeholder='Емайл') }}
+        {% endif %}
+
+        {% if form_registration.password.errors %}
+        {{ form_registration.password(class='form-post-title is-invalid', placeholder='Пароль') }}
+        <div class="invalid-feedback">
+            {% for errors in form_registration.password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form_registration.password(class='form-post-title', placeholder='Пароль') }}
+        {% endif %}
+
+        {% if form_registration.confirm_password.errors %}
+        {{ form_registration.confirm_password(class='form-post-title is-invalid', placeholder='Подтвердите пароль') }}
+        <div class="invalid-feedback">
+            {% for errors in form_registration.confirm_password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form_registration.confirm_password(class='form-post-title', placeholder='Подтвердите пароль') }}
+        {% endif %}
+
+        {{ form_registration.role() }}
+
+
+        <div class="form-group_button">
+           <div class="btn">
+                {{ form_registration.submit(class='btn_sign_in') }}
+           </div>
+              <small class="text-muted">
+            <a class='ml-2' href="{{ url_for('users.login')}}">Уже есть аккаунт? </a>
+        </small>
+        </div>
+
+    </form>
+    <div class="border-top">
+
+    </div>
+</div>
+
+
+
+{% endblock content%}

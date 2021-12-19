@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="login_form">
+    <form action="" class="form_sign_in" enctype="multipart/form-data" method="POST">
+
+
+        {{ form_post_update.hidden_tag() }}
+
+        <legend class="legend">{{ legend }}</legend>
+
+
+        <div class="invalid-feedback">
+            {% for errors in form_post_update.title.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+
+
+
+
+        {{ form_post_update.title(class='form-post-title', placeholder='Обновить заголовок') }}
+
+        {{ form_post_update.content(class='form-post-textarea', placeholder='Обновить текст статьи') }}
+
+        Рубрика {{ form_post_update.category(style='wight:500px; color: blue; font-size: 18px;')}}
+
+        {{ form_post_update.picture }}
+
+
+        {{ form_post_update.submit(class='btn_new_post') }}
+
+    </form>
+</div>
+{% endblock content %}

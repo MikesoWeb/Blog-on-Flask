@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section class="news_area single-post-area p_100">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="main_blog_details">
+					<div class="latest_news">
+						{% for post in search_posts %}
+						<div class="media">
+							<div class="d-flex">
+							</div>
+							<div class="media-body">
+								<div class="choice_text">
+									<div class="date">
+										<a class="" href="{{ url_for( 'users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+										<i class="fa fa-calendar" aria-hidden="true"></i>{{ post.date_posted.strftime('%d.%m.%Y %H.%M') }}
+										<i class="fa fa-comments-o" aria-hidden="true"></i>Просмотров
+											{{ post.views }} | {{ post.comments|count if post.comments else 0 }} Комментариев
+									</div>
+										<h4><a href="{{ url_for('posts.post', slug=post.slug) }}">{{ post.title|safe }}</a></h4>
+									</a>
+									<p>{{ post.content|safe |truncate(200, True) }}</p>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+
+			</div>
+		</div>
+</section>
+<!--================End News Area =================-->
+
+<!--================ start footer Area  =================-->
+{% endblock content %}

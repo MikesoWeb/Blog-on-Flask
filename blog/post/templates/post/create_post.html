@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="login_form new_post" >
+    <form action="" class="form_sign_in" enctype="multipart/form-data" method="POST">
+
+
+        {{ form_new_post.hidden_tag() }}
+
+        <legend class="legend">{{ legend }}</legend>
+
+
+        <div class="invalid-feedback">
+            {% for errors in form_new_post.title.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+
+
+        {{ form_new_post.title(class='form-post-title', placeholder='Заголовок') }}
+        {{ form_new_post.content(class='form-post-textarea', placeholder='Текст статьи') }}
+        {{ form_new_post.tag_form(style='width:750px; color: blue; font-size: 18px;', placeholder='Несколько тегов через /')}}
+        Выберите рубрику поста {{ form_new_post.category(style='wight:500px; color: blue; font-size: 18px;')}}
+        {{ form_new_post.picture }}
+
+
+
+
+        {{ form_new_post.submit(class='btn_new_post') }}
+
+    </form>
+</div>
+{% endblock content %}

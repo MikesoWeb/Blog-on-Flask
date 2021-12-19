@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+
+<div class="blog_content_area">
+ {% if not all_posts %}
+
+        <h3 style="margin:0 auto;">{{ nothing }}</h3>
+     <button class="create_post_btn"><a href="{{ url_for('posts.new_post') }}" class="btn_sign_in">Написать статью</a></button>
+
+  {% else %}
+    <div class="blog_content">
+
+
+          {% for post in posts.items %}
+
+        <div class="post">
+            <div class="info_user_blog">
+                <div class="info_user_blog_left">
+
+                    <img src="{{ url_for('static', filename='profile_pics/' + 'users/' + post.author.username + '/' + 'account_img' + '/' + post.author.image_file) }}"
+                         alt="" class="mr-3 mt-3 rounded-circle" style="width:40px;">
+                    <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username)}}">{{
+                        post.author.username }}</a>
+                </div>
+
+                <div class="info_user_blog_right a">
+                    <small>{{ post.date_posted.strftime('%d.%m.%Y %H.%M') }}</small>
+                </div>
+            </div>
+
+            <div class="posts_blog">
+                <h2><a class="article-title" href="{{ url_for('posts.post', slug='python-dlia-vsekh') }}">{{ post.title|safe }}</a></h2>
+                {% if post.content|count >= 100 or post %}
+                <p class="article-content" align="left">{{ post.content|safe|truncate(250, True) }}
+                    {% else %}
+                <p class="article-content" align="left">{{ post.content }}</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="post_paginate">
+
+            {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=3) %}
+            {% if page_num %}
+            {% if posts.page == page_num %}
+            <a class="btn btn-info mb-4" href="{{ url_for('main.blog', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+            <a class="btn btn-outline-success mb-4" href="{{ url_for('main.blog', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+            {% else %}
+            ...
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="info_posts_user">
+
+
+            <h4>Статей на блоге: {{ posts.total }}</h4>
+
+
+            {% for user in all_users %}
+                {% if user.posts|count > 0 %}
+                <p><a class="mr-2" href="{{ url_for('users.user_posts', username=user.username) }}">{{ user.username }}</a>({{ user.posts|count }})</p>
+                {% endif%}
+            {% endfor %}
+                   <button class="create_post_btn"><a href="{{ url_for('posts.new_post') }}" class="btn_sign_in">Написать статью</a></button>
+
+    </div>
+
+
+
+
+    {% endif %}
+    </div>
+
+
+{% endblock content %}

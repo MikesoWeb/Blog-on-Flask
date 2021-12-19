@@ -1,0 +1,143 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="post">
+    <div class="user_post">
+        <div class="user_info_single_post">
+            <div class="left_side">
+                <img src="{{ url_for('static', filename='profile_pics/'  + 'users/' + post.author.username + '/account_img/' + post.author.image_file) }}"
+                     alt="" class="mr-3 mt-3 rounded-circle" style="width:40px;">
+                    <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a>
+                    <small class="text-muted">{{ post.date_posted.strftime('%d.%m.%Y-%H.%M') }}</small> <a href="{{ url_for('posts.category', category_str=post.category) }}">{{ post.category }}</a>
+                    {% if post.author == current_user %}
+            </div>
+
+            <div class="right_side">
+                <a class="btn btn-secondary btn-sm m-2" href="{{ url_for('posts.update_post', slug=post.slug) }}">Обновить</a>
+                <button type="button" class="btn btn-danger btn-sm m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Удалить
+                </button>
+
+                {% endif %}
+            </div>
+        </div>
+
+<center>
+    <h2 class="article-title" align="left"> {{ post.title|safe }}</h2>
+            <p class="article-content" align="left" >{{ post.content|safe}}</p>
+
+<img src="{{ image_file }}" alt="post_img"><br>
+</center>
+
+
+        <div class="tags">
+{% for i in post.tags %}
+
+        <div class="bound">
+            {% if post.author == current_user %}
+            <div class="tag"><b><a href="{{ url_for('posts.tag', tag_str=i.name) }}">{{ i.name }}</a></b></div>
+            <div class="delete_tag"><a href="{{ url_for( 'posts.delete_tag', tag_id=i.id) }}">Удалить</a></div>
+            {% else %}
+            <div class="tag"><b><a href="{{ url_for('posts.tag', tag_str=i.name) }}">{{ i.name }}</a></b></div>
+            {% endif %}
+
+
+
+        </div>
+
+{% endfor %}
+
+</div>
+        {% if post.author == current_user %}
+        <form method="POST" action="">
+            {{ form_add_tag.hidden_tag() }}
+                Тэг: {{ form_add_tag.tag_form(style='width:750px; color: blue; font-size: 18px;', placeholder='Несколько тегов через /')}}
+                {{ form_add_tag.submit(class='btn_new_post', value='Добавить') }}
+        </form>
+        {% else %}
+        {% endif %}
+
+<div class="post_stat_side">
+    <div class="left_side_stat_post">&#128065; {{ post.views }}</div>
+    <div class="right_side_stat_post">&#10084; {{ post.likes }}</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Удалить пост?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Удалить"></button>
+            </div>
+            <div class="modal-body">
+                Вы точно хотите удалить этот пост?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <form action="{{ url_for('posts.delete_post', slug=post.slug) }}" method="post">
+                    <input type="submit" class="btn btn-danger" value="Удалить">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+        <div class="content_comment">
+        <form method="POST" action="{{url_for('posts.post', slug=post.slug)}}">
+            {{ form_add_comment.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+
+                        {{ form_add_comment.body(class="form-control form-control-lg") }}
+                </div>
+            </fieldset>
+                                <p></p>
+
+            <div class="form-group">
+
+                {{ form_add_comment.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+
+
+
+
+<div class="comment_side">
+                            {% for i in comment %}
+<div class="single_comment">
+    <div class="head_comment">
+        <div class="left_comment_side">
+            <a href="{{ url_for('users.user_posts', username=i.username)}}">{{ i.username }}</a>
+        </div>
+        <div class="right_comment_side">{{ i.date_posted.strftime('%d.%m.%Y-%H.%M') }}</div>
+    </div>
+
+    <div class="body_comment">
+       {{ i.body }} {{ i.id }}
+    </div>
+    <div class="stat_comment">
+
+        <div class="left_stat_side">&#128065; {{ i.views }}</div>
+        <div class="right_stat_side">&#10084; {{ i.likes }}</div>
+
+    </div>
+    {% if post.author == current_user or current_user.username == i.username or current_user.is_admin %}
+    <a href="{{ url_for( 'posts.update_comment', comment_id=i.id) }}"><p>Обновить комментарий</p></a>
+    <a href="{{ url_for( 'posts.delete_comment', comment_id=i.id) }}"><p>Удалить комментарий</p></a>
+    {% else %}
+
+    {% endif %}
+
+</div>
+                                    {% endfor %}
+
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

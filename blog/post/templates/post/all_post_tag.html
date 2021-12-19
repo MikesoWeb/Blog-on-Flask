@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="posts_category_side">
+Статьи тега: {{ current_tag.name }}
+
+
+<div class="list_posts_category">
+
+<ol>
+
+{% for post in name_tags %}
+
+    <li style="font-size: 20px; list-style: none;"><a href="{{ url_for('posts.post', slug=post.tag_post.slug) }}" style=" text-decoration: none;">
+
+        {{ post.tag_post.title|capitalize }}</a> {{ post.tag_post.author.username }}</li>
+
+    {% endfor %}
+</ol>
+</div>
+    </div>
+{% endblock %}

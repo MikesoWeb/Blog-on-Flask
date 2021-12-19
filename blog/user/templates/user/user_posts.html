@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="wrapper_content">
+
+
+    <div class="user_posts">
+        <div class="user_info">
+            <div class="user_img_info">
+                <img src="{{ url_for('static', filename='profile_pics/' + 'users/' + user.username + '/' + 'account_img/' + user.image_file) }}"
+                     alt="" class="mr-3 mt-3 rounded-circle">
+            </div>
+            <div class="user_username_info">
+                <a class="mr-2" href="{{ url_for('users.user_posts', username=user.username)}}">{{ user.username }}</a>({{ posts.total }})
+            </div>
+        </div>
+{% for post in posts.items %}
+
+
+<div class="post">
+
+
+    <h2><a class="article-title" style="font-size: 20px;" href="{{ url_for('posts.post', slug=post.slug) }}">{{ post.title }}</a></h2>
+
+</div>
+
+
+{% endfor %}
+
+        </div>
+
+            <a href="{{ url_for( 'main.blog' ) }}">Вернуться к блогу</a>
+        <hr>
+
+<div class="post_paginate">
+
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=3) %}
+        {% if page_num %}
+            {% if posts.page == page_num %}
+            <a class="btn btn-info mb-4" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+            <a class="btn btn-outline-success mb-4" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+        {% else %}
+            ...
+    {% endif %}
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}

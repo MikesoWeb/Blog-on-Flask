@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="login_form reset_token">
+    <form action="" method="POST">
+
+        {{ form_reset_password.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Сбросить пароль</legend>
+
+            <div class="form-group">
+                {% if form_reset_password.password.errors %}
+                {{ form_reset_password.password(class='form-control form-control-lg is-invalid', placeholder="Пароль") }}
+                <div class="invalid-feedback">
+                    {% for errors in form_reset_password.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form_reset_password.password(class='form-control form-control-lg', placeholder="Пароль") }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {% if form_reset_password.confirm_password.errors %}
+                {{ form_reset_password.confirm_password(class='form-control form-control-lg is-invalid', placeholder="Подтвердите пароль") }}
+                <div class="invalid-feedback">
+                    {% for errors in form_reset_password.confirm_password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form_reset_password.confirm_password(class='form-control form-control-lg', placeholder="Подтвердите пароль") }}
+                {% endif %}
+            </div>
+
+        </fieldset>
+
+        <div class="form-group">
+            {{ form_reset_password.submit(class='btn_log_in') }}
+        </div>
+
+    </form>
+</div>
+
+{% endblock content %}
