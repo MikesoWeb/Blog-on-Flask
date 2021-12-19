@@ -2,7 +2,6 @@ from datetime import datetime
 
 from flask import current_app
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from slugify import slugify
 
 from blog import db, login_manager
 from flask_login import UserMixin
