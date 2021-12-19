@@ -32,7 +32,7 @@
             </div>
 
             <div class="posts_blog">
-                <h2><a class="article-title" href="{{ url_for('posts.post', slug='python-dlia-vsekh') }}">{{ post.title|safe }}</a></h2>
+                <h2><a class="article-title" href="{{ url_for('posts.post', slug=post.slug) }}">{{ post.title|safe }}</a></h2>
                 {% if post.content|count >= 100 or post %}
                 <p class="article-content" align="left">{{ post.content|safe|truncate(250, True) }}
                     {% else %}

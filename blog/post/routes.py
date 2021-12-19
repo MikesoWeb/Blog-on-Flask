@@ -34,12 +34,10 @@ def new_post():
                 db.session.add(tag_post)
             db.session.commit()
             flash('Пост был опубликован!', 'success')
-
             return redirect(url_for('main.blog'))
         else:
             if request.method == 'POST':
                 flash('Формат изображения должен быть "jpg", "png"', 'success')
-
     except PIL.UnidentifiedImageError:
         flash('Выберите изображение для статьи', 'danger')
     except sqlalchemy.exc.IntegrityError:
@@ -62,7 +60,6 @@ def new_post():
 def post(slug):
     post = Post.query.filter_by(slug=slug).first()
     comment = Comment.query.filter_by(post_id=post.id).order_by(db.desc(Comment.date_posted)).all()
-    print(comment)
     post.views += 1
 
     form_post = PostForm()

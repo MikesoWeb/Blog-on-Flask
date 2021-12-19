@@ -55,7 +55,7 @@ class Post(db.Model):
     title = db.Column(db.String(200), unique=True, nullable=False)
     content = db.Column(db.Text(60), nullable=False)
     category = db.Column(db.String(100), nullable=False)
-    image_post = db.Column(db.String(30), nullable=False, default='default.jpg')
+    image_post = db.Column(db.String(50), nullable=False, default='default.jpg')
     views = db.Column(db.Integer, default=0)
     likes = db.Column(db.Integer, default=0)
     slug = db.Column(db.String(), unique=True, index=True)
