@@ -41,12 +41,12 @@
 
 Создать файл .env в корне папки blog и записать туда переменные окружения
 
-FLASK_ENV=development
-FLASK_APP=run.py
-SQLALCHEMY_DATABASE_URI=sqlite:///blog.db
-SQLALCHEMY_TRACK_MODIFICATIONS=True
-EMAIL_USER=YOUR_MAIL
-EMAIL_PASS=YOUR_PASS
+- FLASK_ENV=development
+- FLASK_APP=run.py
+- SQLALCHEMY_DATABASE_URI=sqlite:///blog.db
+- SQLALCHEMY_TRACK_MODIFICATIONS=True
+- EMAIL_USER=YOUR_MAIL
+- EMAIL_PASS=YOUR_PASS
 
 
 Для запуска проекта используется файл
