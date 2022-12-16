@@ -4,6 +4,9 @@ __pycache__/
 *$py.class
 .idea/
 
+#DB
+*.db
+
 # C extensions
 *.so
 
@@ -107,6 +110,7 @@ blog/.env
 .venv
 env/
 venv/
+*env
 ENV/
 env.bak/
 venv.bak/
